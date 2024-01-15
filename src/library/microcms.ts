@@ -12,6 +12,11 @@ export type Blog = {
     revisedAt: string;
     title: string;
     content: string;
+
+    // eyecatch追加
+    eyecatch?: {
+        url:string;
+    }
 };
 export type BlogResponse = {
     totalCount: number;
@@ -20,9 +25,11 @@ export type BlogResponse = {
     contents: Blog[];
 };
 
-//API呼び出し
-export const getBlogs = async (queries?: any) => {
-    return await client.get<BlogResponse>({ endpoint: "blogs", queries });
+//API呼び出し、eyecatchパラメータ追加により修正
+export const getBlogs = async (queries?: { fields?: string[] }) => {
+    const fields = queries?.fields ? queries.fields.concat("eyecatch") : ["eyecatch"];
+
+    return await client.get<BlogResponse>({ endpoint: "blogs", queries:{ ...queries,fields }, });
 };
 export const getBlogDetail = async (contentId: string, queries?: any) => {
     return await client.getListDetail<Blog>({

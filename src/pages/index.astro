@@ -4,7 +4,7 @@ import Layout from "../layouts/Layout.astro";
 // microCMS呼び出し
 import { getBlogs } from "../library/microcms";
 import _blogId_ from "./[blogId].astro";
-const response = await getBlogs({ fields: ["id", "title", "eyecatch"] });
+const response = await getBlogs({ fields: ["id", "title", "eyecatch", "publishedAt", "content"] });
 ---
 
 <Layout title="My first blog with Astro">
@@ -13,11 +13,25 @@ const response = await getBlogs({ fields: ["id", "title", "eyecatch"] });
 			{
 				response.contents.map((content: any) => (
 					<li>
-						{content.eyecatch && <img src={content.eyecatch.url} alt="画像">}
-						<a href={content.id}>{content.title}</a>
+						<a href={content.id}>
+							<h3>{content.title}</h3>
+							{content.eyecatch && (
+								<img src={content.eyecatch.url} alt={content.title} />
+							)}
+							<p>{content.publishedAt.substring(0,10)}</p>
+							<p>{content.content ? content.content.replace(/<[^>]*>/g, '').substring(0, 50) : ''}
+							{content.content && content.content.length > 50 && (<span>[...]</span>)}</p>
+						</a>
 					</li>
 				))
 			}
 		</ul>
 	</main>
 </Layout>
+<style>
+	img {
+		width: 400px;
+		height: 280px;
+		object-fit: contain;
+	}
+</style>

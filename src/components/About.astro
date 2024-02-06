@@ -5,7 +5,7 @@ import Container from './Container.astro';
 <section id="about">
   <h2 class="section-title">About</h2>
   <Container>
-    <div id="showAbout" class="container">
+    <div class="container">
       <p class="fade-in">2020年、世界的な感染症の拡大により、演奏家たちは演奏の場を奪われた。しかし、困難な状況にもめげず、2021年4月からは新しい冒険が始まった。それは、無観客ライブの配信。</p>
       <p class="fade-in">この新しい舞台で、私たちは一つの信念を抱いていた。それは、音質においては妥協を許さず、最高のサウンドを届けたいという思い。数々の試行錯誤を繰り返し、納得のいく音楽を奏でるために、日々努力を重ねた。</p>
       <p class="fade-in">時が経つにつれ、社会も変化の兆しを見せ始めた。アフターコロナの時代が訪れ、演奏家たちは再び様々な場での活動を再開した。それぞれが持つ独自のスタイルで、新たなステージに立ち続けている。</p>
@@ -15,9 +15,6 @@ import Container from './Container.astro';
   </Container>
 </section>
 <style>
-  .container.fade-in {
-    opacity: 0;
-  }
   .container * + * {
     margin-top: 20px;
   }
@@ -26,3 +23,20 @@ import Container from './Container.astro';
     font-family: 'Noto Serif JP';
   }
 </style>
+<script>
+  import { gsap } from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  gsap.from('.fade-in', {
+    y: 100,
+    opacity: 0,
+    stagger: 0.5,
+    duration: 1.5,
+    scrollTrigger: {
+      trigger: '.fade-in', // アニメーションを開始する要素
+      start: 'bottom-=25% bottom', // 画面の中央よりも少し下から達したら開始
+    },
+  });
+</script>

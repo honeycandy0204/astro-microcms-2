@@ -1,53 +1,62 @@
 ---
 import WideContainer from './WideContainer.astro';
+import { Icon } from 'astro-icon/components';
 const currentYear = new Date().getFullYear();
 ---
 
 <footer>
-    <WideContainer>
-        <div class='flexContainer'>
-            <div class='group'>
-                <p>Designed & Developed with</p><a href='https://astro.build/'></a>
-                <p>&copy; {currentYear} HoneyCandyWebDesign</p>
-            </div>
-            <div class='social-icon'>
-                <a href='/'></a>
-                <a href='/'></a>
-                <a href='/'></a>
-            </div>
-        </div>
-    </WideContainer>
+  <WideContainer>
+    <div class="flexContainer">
+      <div class="group">
+        <p>Designed & Developed with</p><a href="https://astro.build/"><span>astro</span></a><a href="https://astro.build/"><Icon name="astro" size={30} /></a>
+        <p>&copy; {currentYear} HoneyCandyWebDesign</p>
+      </div>
+      <div class="social-icon">
+        <a href="/"><Icon name="facebook" size={40} /></a>
+        <a href="/"><Icon name="x" size={40} /></a>
+        <a href="/"><Icon name="github" size={40} /></a>
+      </div>
+    </div>
+  </WideContainer>
 </footer>
 
 <style>
-    footer {
-        color: var(--gray-25);
-        background-color: var(--accent-dark);
-        font-family: 'Noto Sans JP', 'Oswald', 'Noto Serif JP', serif;
-        padding: 20px;
-    }
-    footer p {
-        text-align: center;
-        font-size: 0.9rem;
-        font-weight: 400;
+  footer {
+    color: var(--gray-25);
+    background-color: var(--accent-dark);
+    font-family: 'Noto Sans JP', 'Oswald', 'Noto Serif JP', serif;
+    padding: 20px;
+  }
+  footer p {
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+  .group {
+    display: flex;
+    justify-content: center;
+  }
+  .group a {
+    margin-right: 4px;
+  }
+  .group span {
+    margin-left: 4px;
+    font-weight: bold;
+    border-bottom: solid 1px var(--gray-25);
+  }
+  .social-icon {
+    margin-top: 8px;
+    text-align: center;
+  }
+  @media screen and (min-width: 768px) {
+    .flexContainer {
+      display: flex;
+      justify-content: space-between;
     }
     .group {
-        display: flex;
-        justify-content: center;
+      display: flex;
+      text-align: center;
+      align-items: center;
     }
-    .social-icon {
-        margin-top: 8px;
-        text-align: center;
-    }
-    @media screen and (min-width: 768px) {
-        .flexContainer {
-            display: flex;
-            justify-content: space-between;
-        }
-        .group {
-            display: flex;
-            text-align: center;
-            align-items: center;
-        }
-    }
+  }
 </style>

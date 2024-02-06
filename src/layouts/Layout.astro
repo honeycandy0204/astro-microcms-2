@@ -30,5 +30,25 @@ const { title } = Astro.props;
     <Header />
     <slot />
     <Footer />
+    <script>
+      import { gsap } from 'gsap';
+
+      import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+
+      gsap.registerPlugin(ScrollToPlugin);
+      gsap.utils.toArray('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          e.preventDefault();
+          gsap.to(window, {
+            duration: 1,
+            ease: 'power4.out',
+            scrollTo: {
+              y: e.target.getAttribute('href'),
+              autoKill: false,
+            },
+          });
+        });
+      });
+    </script>
   </body>
 </html>

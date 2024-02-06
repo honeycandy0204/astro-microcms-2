@@ -4,112 +4,112 @@ import { getBlogs } from '../library/microcms';
 const response = await getBlogs({ fields: ['id', 'publishedAt', 'title'] });
 ---
 
-<section id='news'>
-    <Container>
-        <div class='wrap'>
-            <div class='title-area'>
-                <h2 class='section-title left'>News</h2>
-                <p>配信ライブの最新情報</p>
-            </div>
-            <div class='posts-area'>
-                <ul>
-                    {
-                        response.contents.slice(0, 3).map((content: any) => (
-                            <a href={content.id}>
-                                <li>
-                                    <p>
-                                        <time>{content.publishedAt.slice(0, 10)}</time>
-                                        {content.title}
-                                    </p>
-                                </li>
-                            </a>
-                        ))
-                    }
-                </ul>
-                <div class='allposts-link'>
-                    <a href='/'>記事一覧ページはこちら<span></span></a>
-                </div>
-            </div>
+<section id="news">
+  <Container>
+    <div class="wrap">
+      <div class="title-area">
+        <h2 class="section-title left">News</h2>
+        <p>配信ライブの最新情報</p>
+      </div>
+      <div class="posts-area">
+        <ul>
+          {
+            response.contents.slice(0, 3).map((content: any) => (
+              <a href={content.id} target="_blank" rel="noopener noreferrer">
+                <li>
+                  <p>
+                    <time>{content.publishedAt.slice(0, 10)}</time>
+                    {content.title}
+                  </p>
+                </li>
+              </a>
+            ))
+          }
+        </ul>
+        <div class="allposts-link">
+          <a href="/">記事一覧ページはこちら<span></span></a>
         </div>
-    </Container>
+      </div>
+    </div>
+  </Container>
 </section>
 <style>
-    @media screen and (min-width: 768px) {
-        .wrap {
-            display: flex;
-            justify-content: start;
-            width: 768px;
-            gap: 16px;
-        }
-        .left {
-            text-align: left;
-        }
-        .posts-area {
-            flex-grow: 1;
-        }
-        ul {
-            width: 100%;
-        }
-    }
+  @media screen and (min-width: 768px) {
     .wrap {
-        width: 96%;
-        margin: 0 auto;
-        text-align: center;
-    }
-    .title-area {
-        text-align: left;
+      display: flex;
+      justify-content: start;
+      width: 768px;
+      gap: 16px;
     }
     .left {
-        text-align: left;
+      text-align: left;
     }
-
+    .posts-area {
+      flex-grow: 1;
+    }
     ul {
-        width: 100%;
-        text-align: left;
-        display: inline-block;
-        margin-bottom: 16px;
+      width: 100%;
     }
-    li {
-        padding: 20px;
-    }
+  }
+  .wrap {
+    width: 96%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .title-area {
+    text-align: left;
+  }
+  .left {
+    text-align: left;
+  }
 
-    li {
-        border-bottom: 0.5px solid var(--accent-light);
-    }
+  ul {
+    width: 100%;
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  li {
+    padding: 20px;
+  }
 
-    li p {
-        font-size: 1.2rem;
-        font-weight: bold;
-    }
+  li {
+    border-bottom: 0.5px solid var(--accent-light);
+  }
 
-    li:hover {
-        transform: scale(1.05);
-        transition: var(--theme-transition);
-    }
+  li p {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
 
-    li:not(:hover) {
-        transition: var(--theme-transition);
-    }
+  li:hover {
+    transform: scale(1.05);
+    transition: var(--theme-transition);
+  }
 
-    time {
-        font-size: 0.9rem;
-        color: var(--gray-10);
-        display: block;
-        font-weight: normal;
-    }
-    .allposts-link {
-        margin: 0 auto;
-        text-align: right;
-        display: block;
-        color: var(--gray-25);
-    }
-    .allposts-link:hover {
-        transform: scale(1.03);
-        transition: var(--theme-transition);
-        color: var(--white);
-    }
+  li:not(:hover) {
+    transition: var(--theme-transition);
+  }
 
-    .allposts-link:not(:hover) {
-        transition: var(--theme-transition);
-    }
+  time {
+    font-size: 0.9rem;
+    color: var(--gray-10);
+    display: block;
+    font-weight: normal;
+  }
+  .allposts-link {
+    margin: 0 auto;
+    text-align: right;
+    display: block;
+    color: var(--gray-25);
+  }
+  .allposts-link:hover {
+    transform: scale(1.03);
+    transition: var(--theme-transition);
+    color: var(--white);
+  }
+
+  .allposts-link:not(:hover) {
+    transition: var(--theme-transition);
+  }
 </style>

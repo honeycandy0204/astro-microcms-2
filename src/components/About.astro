@@ -1,0 +1,28 @@
+---
+import Container from './Container.astro';
+---
+
+<section id="about">
+  <h2 class="section-title">About</h2>
+  <Container>
+    <div id="showAbout" class="container">
+      <p class="fade-in">2020年、世界的な感染症の拡大により、演奏家たちは演奏の場を奪われた。しかし、困難な状況にもめげず、2021年4月からは新しい冒険が始まった。それは、無観客ライブの配信。</p>
+      <p class="fade-in">この新しい舞台で、私たちは一つの信念を抱いていた。それは、音質においては妥協を許さず、最高のサウンドを届けたいという思い。数々の試行錯誤を繰り返し、納得のいく音楽を奏でるために、日々努力を重ねた。</p>
+      <p class="fade-in">時が経つにつれ、社会も変化の兆しを見せ始めた。アフターコロナの時代が訪れ、演奏家たちは再び様々な場での活動を再開した。それぞれが持つ独自のスタイルで、新たなステージに立ち続けている。</p>
+      <h5 class="fade-in">音楽の力とこれからの時代へ</h5>
+      <p class="fade-in">現在でも、私たちは隔月での配信を通じて、音楽の魅力を広く届けている。未だ予測不可能な日々が続く中、音楽は架け橋となり、人々と共有されている。この新たな挑戦と成果は、演奏家たちの音楽への情熱と観客との結びつきを深めている。</p>
+    </div>
+  </Container>
+</section>
+<style>
+  .container.fade-in {
+    opacity: 0;
+  }
+  .container * + * {
+    margin-top: 20px;
+  }
+  h5,
+  p {
+    font-family: 'Noto Serif JP';
+  }
+</style>

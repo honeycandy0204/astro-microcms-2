@@ -1,0 +1,166 @@
+/* Global variables */
+:root {
+  /* カラー（色） */
+  --white: #ffffff;
+  --gray-10: #eeeeee;
+  --gray-25: #aaaaaa;
+  --gray-50: #707070;
+  --gray-75: #444444;
+  --black: #13151a;
+  --gray-999-basis: 0, 0%, 100%;
+  --accent: #883aea;
+  --accent-light: #e0ccfa;
+  --accent-dark: #310a65;
+  --accent-gradient: linear-gradient(0deg, white, var(--accent));
+  --accent-orange-gradient: linear-gradient(0deg, orange, var(--accent));
+  --accent-light-gradient: linear-gradient(0deg, white, var(--accent-light));
+  --accent-dark-gradient: linear-gradient(0deg, white, var(--accent-dark));
+  --accent-btn-gradient: linear-gradient(150deg, var(--accent-light), var(--accent), var(--accent-dark));
+
+  /* Text Sizes */
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-md: 1.125rem;
+  --text-lg: 1.25rem;
+  --text-xl: 1.625rem;
+  --text-2xl: 2.125rem;
+  --text-3xl: 2.625rem;
+  --text-4xl: 3.5rem;
+  --text-5xl: 4.5rem;
+
+  /* Transitions */
+  --theme-transition: 0.2s ease-in-out;
+}
+
+html,
+body {
+  min-height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--white);
+  background-color: var(--black);
+  font-family: "Noto Serif JP", "Noto Sans JP", "Oswald", serif;
+}
+
+/* リセット */
+body,
+h1,
+h2,
+h3,
+p,
+figure,
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1 {
+  font-size: var(--text-5xl);
+}
+
+h2 {
+  font-size: var(--text-4xl);
+}
+
+h3 {
+  font-size: var(--text-3xl);
+}
+
+h4 {
+  font-size: var(--text-2xl);
+}
+
+h5 {
+  font-size: var(--text-xl);
+}
+
+/* セクション余白と背景グラデーション */
+section {
+  padding-bottom: 80px;
+  background: radial-gradient(var(--accent-dark) 0, var(--black) 60%);
+}
+
+/* セクションタイトル */
+.section-title {
+  text-align: center;
+  font-family: "Oswald";
+  font-weight: 400;
+  background-image: var(--accent-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Utilities */
+
+.gap-2 {
+  gap: 0.5rem;
+}
+.gap-4 {
+  gap: 1rem;
+}
+.gap-8 {
+  gap: 2rem;
+}
+.gap-10 {
+  gap: 2.5rem;
+}
+.gap-15 {
+  gap: 3.75rem;
+}
+.gap-20 {
+  gap: 5rem;
+}
+.gap-30 {
+  gap: 7.5rem;
+}
+.gap-48 {
+  gap: 12rem;
+}
+
+@media (min-width: 50em) {
+  .lg\:gap-2 {
+    gap: 0.5rem;
+  }
+  .lg\:gap-4 {
+    gap: 1rem;
+  }
+  .lg\:gap-8 {
+    gap: 2rem;
+  }
+  .lg\:gap-10 {
+    gap: 2.5rem;
+  }
+  .lg\:gap-15 {
+    gap: 3.75rem;
+  }
+  .lg\:gap-20 {
+    gap: 5rem;
+  }
+  .lg\:gap-30 {
+    gap: 7.5rem;
+  }
+  .lg\:gap-48 {
+    gap: 12rem;
+  }
+}

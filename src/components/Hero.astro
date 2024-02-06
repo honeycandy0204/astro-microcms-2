@@ -1,0 +1,71 @@
+---
+import Scroll from '../components/Scroll.astro';
+---
+
+<div id='background' class='background'>
+    <h1>
+        <div id='first' class='animated-element'>
+            <span class='ja-name'>田窪寛之</span>
+            <span class='en-name text-gradient dark'>HiroyukiTakubo</span>
+        </div>
+        <div id='second' class='animated-element'>
+            <span class='ja-name'>小牧良平</span>
+            <span class='en-name text-gradient dark'>RyoheiKomaki</span>
+        </div>
+        <div id='third' class='animated-element'>
+            <span class='ja-name'>無観客ライブ配信特設ページ</span>
+            <span class='main-title text-gradient light'>StreamingJazzLive</span>
+        </div>
+    </h1>
+    <Scroll />
+</div>
+<style>
+    .background {
+        width: 100vw;
+        height: 100vh;
+        padding: 0 1%;
+        background-image: url(../assets/hero-back01.png);
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: right;
+    }
+    h1 {
+        font-weight: 900;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .animated-element {
+        opacity: 0;
+        transition: opacity 0.3s ease; /* フェードインの時間を適切に設定 */
+    }
+
+    h1 span {
+        display: block;
+    }
+    .ja-name {
+        font-size: clamp(2rem, 1.238rem + 3.81vw, 6rem);
+        font-family: 'Noto Serif JP';
+    }
+    .en-name {
+        font-size: clamp(2rem, 1.238rem + 3.81vw, 6rem);
+        font-family: 'Oswald';
+        margin-top: calc(clamp(1.25rem, 0.393rem + 1.79vw, 2rem) * -1);
+    }
+    .main-title {
+        font-size: calc(clamp(2rem, 1.238rem + 3.81vw, 6rem) * 1.4);
+        font-family: 'Oswald';
+        margin-top: calc(clamp(1.5rem, -0.214rem + 3.57vw, 3rem) * -1);
+    }
+    .dark {
+        background-image: var(--accent-dark-gradient);
+    }
+    .light {
+        background-image: var(--accent-orange-gradient);
+    }
+    .text-gradient {
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+</style>

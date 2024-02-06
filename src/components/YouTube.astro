@@ -1,0 +1,134 @@
+---
+
+---
+
+<section id="youtube">
+  <h2 class="section-title">YouTube</h2>
+  <!-- Slider main container -->
+  <div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide">
+        <div class="iframe-container">
+          <iframe src="https://www.youtube.com/embed/hzBPczMSPHE" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="iframe-container">
+          <iframe src="https://www.youtube.com/embed/tb1J2lhA7wo" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="iframe-container">
+          <iframe src="https://www.youtube.com/embed/JiwMAnPuyEA" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="iframe-container">
+          <iframe src="https://www.youtube.com/embed/fB7u__CImBg" allowfullscreen></iframe>
+        </div>
+      </div>
+      <div class="swiper-slide">
+        <div class="iframe-container">
+          <iframe src="https://www.youtube.com/embed/xaDs7JSdoXU" allowfullscreen></iframe>
+        </div>
+      </div>
+      <!-- Add more slides as needed -->
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- If we need scrollbar -->
+    <!-- <div class="swiper-scrollbar"></div> -->
+  </div>
+</section>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script is:inline>
+const swiper = new Swiper('.swiper', {
+  // Optional parameters
+  direction: 'horizontal', // Change to 'vertical' if needed
+  loop: true,
+
+  // If we need pagination
+  pagination: {
+    el: '.swiper-pagination',
+    clickable: true,
+  },
+
+  // Navigation arrows
+  navigation: {
+    nextEl: '.swiper-button-next',
+    prevEl: '.swiper-button-prev',
+  },
+});
+
+// Fetch YouTube video data and populate slides
+const slides = document.querySelectorAll('.swiper-slide');
+slides.forEach((slide) => {
+  const videoId = slide.dataset.youtubeId;
+  if (videoId) {
+    // Create a thumbnail image
+    const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
+    slide.style.backgroundImage = `url('${thumbnailUrl}')`;
+
+    // Add a link to the YouTube video
+    const link = document.createElement('a');
+    link.href = `https://www.youtube.com/watch?v=${videoId}`;
+    link.target = '_blank';
+    slide.appendChild(link);
+  }
+});
+</script>
+
+<style>
+  iframe {
+    border: none;
+  }
+
+  .swiper {
+    width: 98%;
+    /* height: auto; */
+    margin: 0 auto;
+  }
+
+  .swiper-slide {
+    background-size: cover;
+    background-position: center;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  .swiper-slide a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .iframe-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 アスペクト比の動画用に調整（9 ÷ 16 = 0.5625） */
+  }
+
+  .iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .swiper {
+      width: 640px;
+      height: 360px;
+    }
+  }
+</style>

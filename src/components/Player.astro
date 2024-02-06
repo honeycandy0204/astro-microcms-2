@@ -1,0 +1,72 @@
+---
+import { Image } from 'astro:assets';
+import komakiImage from '../assets/komaki.png';
+import takuboImage from '../assets/takubo.png';
+import WideContainer from './WideContainer.astro';
+---
+
+<section>
+    <WideContainer>
+        <div class='wrap'>
+            <div class='player-text left-slide-in'>
+                <h4>田窪寛之<span></span></h4>
+                <h5>ピアニスト</h5>
+                <p>田窪寛之は、その指先から洗練された音楽の旋律が奏でられる存在である。彼の演奏は繊細かつ力強く、深い感情を胸に秘めながら鍵盤を舞台に奏でる。洗練されたテクニックと独自の表現力で、田窪は聴衆を音楽の奥深い世界へと誘う。彼のピアノはまさに芸術品であり、ジャズの新たなる躍動を生み出しているのである。</p>
+            </div>
+            <div class='player-image right-slide-in'>
+                <Image src={takuboImage} alt='田窪寛之' />
+            </div>
+        </div>
+        <div class='wrap flexReverse'>
+            <div class='player-text right-slide-in'>
+                <h4 class='reverse'><span></span>小牧良平</h4>
+                <h5 class='reverse'>ベーシスト</h5>
+                <p>小牧良平は、低音域から湧き上がる重厚な音色をもつ存在である。彼のベースは堅牢かつ繊細なニュアンスを持ち、その奏でるリズムは聴衆の心を揺り動かす。小牧の指弾くベースは、音楽の基盤を築き上げ、ジャズの魅力を深化させている。緻密なフレーズと革新的なアプローチで、小牧はジャズの世界で確固たる地位を築いているのである。</p>
+            </div>
+            <div class='player-image left-slide-in'>
+                <Image src={komakiImage} alt='小牧良平' />
+            </div>
+        </div>
+    </WideContainer>
+</section>
+
+<style>
+    h4 {
+        color: var(--accent-light);
+    }
+    h4 span {
+        vertical-align: -6px;
+    }
+    .player-image {
+        width: 80%;
+        margin: 0 auto;
+    }
+    @media screen and (min-width: 768px) {
+        .wrap {
+            display: flex;
+            justify-content: center;
+            margin: 8px auto 0;
+            gap: 8px;
+        }
+        .flexReverse {
+            flex-direction: row-reverse;
+        }
+        .reverse {
+            text-align: right;
+        }
+        .player-text {
+            width: 48%;
+        }
+        .player-image {
+            width: 48%;
+        }
+    }
+    .left-slide-in,
+    .right-slide-in {
+        opacity: 0;
+        visibility: hidden;
+        transition:
+            opacity 0.5s ease,
+            visibility 0.5s ease;
+    }
+</style>

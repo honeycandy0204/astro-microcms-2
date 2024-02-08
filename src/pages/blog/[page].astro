@@ -11,7 +11,7 @@ export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
   const blogs = blogsResponse.contents;
 
   // ページネーション用にブログデータを分割
-  return paginate(blogs, { pageSize: 2 }); // 1ページあたり3件ずつ表示
+  return paginate(blogs, { pageSize: 10 }); // 1ページあたり10件ずつ表示
 };
 
 const { page } = Astro.props;

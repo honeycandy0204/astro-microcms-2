@@ -48,43 +48,41 @@
   </div>
 </section>
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script is:inline src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-<script is:inline>
-const swiper = new Swiper('.swiper', {
-  // Optional parameters
-  direction: 'horizontal', // Change to 'vertical' if needed
-  loop: true,
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Pagination } from 'swiper/modules';
+  import 'swiper/css/bundle';
 
-  // If we need pagination
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
+  export const swiperConfig = {
+    modules: [Navigation, Pagination],
+    // Optional parameters
+    loop: true,
 
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-});
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
 
-// Fetch YouTube video data and populate slides
-const slides = document.querySelectorAll('.swiper-slide');
-slides.forEach((slide) => {
-  const videoId = slide.dataset.youtubeId;
-  if (videoId) {
-    // Create a thumbnail image
-    const thumbnailUrl = `https://img.youtube.com/vi/${videoId}/mqdefault.jpg`;
-    slide.style.backgroundImage = `url('${thumbnailUrl}')`;
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
 
-    // Add a link to the YouTube video
-    const link = document.createElement('a');
-    link.href = `https://www.youtube.com/watch?v=${videoId}`;
-    link.target = '_blank';
-    slide.appendChild(link);
-  }
-});
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  };
+
+  // Swiperを使ってカルーセルを作成する関数を定義
+  const createSwiper = () => {
+    new Swiper('.swiper', swiperConfig);
+  };
+
+  // Swiperを使ってカルーセルを作成する関数を呼び出す
+  createSwiper();
 </script>
 
 <style>

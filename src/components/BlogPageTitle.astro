@@ -1,0 +1,34 @@
+---
+const { title } = Astro.props;
+---
+
+<div class="header">
+  <div>
+    <h2 class="section-title">{title}</h2>
+    <p>配信ライブの最新情報</p>
+  </div>
+  <a href="/" target="_blank" rel="noopener noreferrer">
+    Back to Home
+    <span class="icon">
+      <svg width="16" height="16" viewBox="0 0 20 20"><path fill="currentColor" d="M17 17H3V3h5V1H3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-5h-2z"></path><path fill="currentColor" d="m11 1l3.3 3.3L8.6 10l1.4 1.4l5.7-5.7L19 9V1z"></path></svg>
+    </span>
+  </a>
+</div>
+<style>
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+  .header p,
+  .header a {
+    color: var(--accent-light);
+  }
+  .header a {
+    font-family: 'Oswald';
+    font-weight: bold;
+  }
+  .section-title {
+    text-align: left;
+  }
+</style>

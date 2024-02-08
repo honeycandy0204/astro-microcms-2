@@ -1,5 +1,6 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import BlogLayout from '../layouts/BlogLayout.astro';
+import BlogPageTitle from '../components/BlogPageTitle.astro';
 import Container from '../components/Container.astro';
 import { getBlogs, getBlogDetail } from '../library/microcms';
 
@@ -18,16 +19,61 @@ const { blogId } = Astro.params;
 const blog = await getBlogDetail(blogId as string);
 ---
 
-<Layout title="My first blog with Astro">
+<BlogLayout title={blog.title}>
   <main>
     <Container>
+      <BlogPageTitle title="news Blog" />
       <div class="postDetail">
-        <h2 class="title">{blog.title}</h2>
-        <p class="publishedAt">公開日時:{blog.publishedAt}</p>
-        {blog.eyecatch && <img src={blog.eyecatch?.url} alt="画像" />}
+        <h1 class="title">{blog.title}</h1>
+        <p class="publishDate">
+          <span class="icon">
+            <svg width="20" height="20" viewBox="0 0 256 256">
+              <path fill="currentColor" d="M128 26a102 102 0 1 0 102 102A102.12 102.12 0 0 0 128 26m0 192a90 90 0 1 1 90-90a90.1 90.1 0 0 1-90 90m62-90a6 6 0 0 1-6 6h-56a6 6 0 0 1-6-6V72a6 6 0 0 1 12 0v50h50a6 6 0 0 1 6 6"></path>
+            </svg>
+          </span>
+          <!-- sv-SEロケールはYYYY-MM-DD形式の日付文字列を戻す -->
+          {new Date(blog.publishDate).toLocaleString('sv-SE')}
+        </p>
+        <div class="eyecatchImage">{blog.eyecatch && <img src={blog.eyecatch?.url} alt={blog.title} />}</div>
+        <span class="separator"></span>
         <div class="post" set:html={blog.content} />
       </div>
     </Container>
   </main>
-</Layout>
-<style></style>
+</BlogLayout>
+<style>
+  .publishDate {
+    color: var(--gray-25);
+  }
+  .icon {
+    vertical-align: -4px;
+  }
+  .postDetail {
+    padding: 60px 0;
+    background: radial-gradient(var(--accent-dark) 0, var(--black) 60%);
+  }
+  .postDetail * + * {
+    margin-top: 8px;
+  }
+  h1 {
+    font-size: 2em;
+  }
+  .eyecatchImage {
+    max-width: 75%;
+    margin: 0.5em auto;
+  }
+  .separator {
+    display: block;
+    width: 100%;
+    height: 0.5px;
+    background-color: var(--gray-50);
+    margin: 20px 0;
+  }
+</style>
+<style is:inline>
+  .post figure {
+    max-width: 75%;
+    height: auto;
+    margin: 0.5em auto;
+  }
+</style>

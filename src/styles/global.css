@@ -112,6 +112,11 @@ section {
   -webkit-text-fill-color: transparent;
 }
 
+/* icon */
+.icon {
+  display: inline-flex;
+}
+
 /* Utilities */
 
 .gap-2 {

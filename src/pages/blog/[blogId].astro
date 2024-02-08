@@ -1,8 +1,8 @@
 ---
-import BlogLayout from '../layouts/BlogLayout.astro';
-import BlogPageTitle from '../components/BlogPageTitle.astro';
-import Container from '../components/Container.astro';
-import { getBlogs, getBlogDetail } from '../library/microcms';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import BlogPageTitle from '../../components/BlogPageTitle.astro';
+import Container from '../../components/Container.astro';
+import { getBlogs, getBlogDetail } from '../../library/microcms';
 
 // 詳細記事ページの全パスを取得
 export async function getStaticPaths() {
@@ -38,6 +38,9 @@ const blog = await getBlogDetail(blogId as string);
         <span class="separator"></span>
         <div class="post" set:html={blog.content} />
       </div>
+      <div class="backPosts">
+        <a href="/blog/1">記事一覧に戻る</a>
+      </div>
     </Container>
   </main>
 </BlogLayout>
@@ -68,6 +71,14 @@ const blog = await getBlogDetail(blogId as string);
     height: 0.5px;
     background-color: var(--gray-50);
     margin: 20px 0;
+  }
+  .backPosts {
+    text-align: center;
+    font-weight: bold;
+    margin: 1em;
+  }
+  .backPosts a {
+    border-bottom: solid 1px var(--white);
   }
 </style>
 <style is:inline>

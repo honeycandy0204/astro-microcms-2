@@ -1,0 +1,135 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import Container from '../../components/Container.astro';
+import BlogPageTitle from '../../components/BlogPageTitle.astro';
+import { getBlogs } from '../../library/microcms';
+import type { GetStaticPathsOptions } from 'astro';
+
+export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
+  // limit パラメーターを指定してブログを取得
+  const blogsResponse = await getBlogs({ limit: 100, fields: ['id', 'publishDate', 'title'] });
+  const blogs = blogsResponse.contents;
+
+  // ページネーション用にブログデータを分割
+  return paginate(blogs, { pageSize: 2 }); // 1ページあたり3件ずつ表示
+};
+
+const { page } = Astro.props;
+---
+
+<BlogLayout title="記事一覧ページ|TKS">
+  <section>
+    <Container>
+      <BlogPageTitle title="News" />
+      <div class="posts-area">
+        <ul>
+          {
+            page.data.map((content: any) => (
+              <a href={content.id}>
+                <li>
+                  <p>
+                    <time>{new Date(content.publishDate).toLocaleString('sv-SE')}</time>
+                    {content.title}
+                  </p>
+                </li>
+              </a>
+            ))
+          }
+        </ul>
+      </div>
+      <nav>
+        <ul style={{ display: 'flex', justifyContent: 'space-between' }}>
+          <li style={{ visibility: page.url.prev ? 'visible' : 'hidden' }}>
+            {
+              page.url.prev && (
+                <a href={page.url.prev}>
+                  <svg width="24" height="24" viewBox="0 0 20 20">
+                    <path fill="currentColor" d="m4 10l9 9l1.4-1.5L7 10l7.4-7.5L13 1z" />
+                  </svg>
+                </a>
+              )
+            }
+          </li>
+          <li style={{ visibility: page.url.next ? 'visible' : 'hidden' }}>
+            {
+              page.url.next && (
+                <a href={page.url.next}>
+                  <svg width="24" height="24" viewBox="0 0 20 20">
+                    <path fill="currentColor" d="M7 1L5.6 2.5L13 10l-7.4 7.5L7 19l9-9z" />
+                  </svg>
+                </a>
+              )
+            }
+          </li>
+        </ul>
+        {/* page.currentPageで現在ページ、page.lastPageで総ページ数を表示 */}
+        <p>page {page.currentPage}/{page.lastPage}</p>
+      </nav>
+    </Container>
+  </section>
+</BlogLayout>
+
+<style>
+  @media screen and (min-width: 768px) {
+    .left {
+      text-align: left;
+    }
+    .posts-area {
+      flex-grow: 1;
+    }
+    .posts-area ul {
+      width: 100%;
+    }
+  }
+  .wrap {
+    width: 96%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .title-area {
+    text-align: left;
+  }
+  .left {
+    text-align: left;
+  }
+
+  .posts-area ul {
+    width: 100%;
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  .posts-area li {
+    padding: 20px;
+  }
+
+  .posts-area li {
+    border-bottom: 0.5px solid var(--accent-light);
+  }
+
+  .posts-area li p {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+
+  .posts-area li:hover {
+    transform: scale(1.05);
+    transition: var(--theme-transition);
+  }
+
+  .posts-area li:not(:hover) {
+    transition: var(--theme-transition);
+  }
+
+  time {
+    font-size: 0.9rem;
+    color: var(--gray-10);
+    display: block;
+    font-weight: normal;
+  }
+  nav p {
+    text-align: center;
+    font-family: 'Oswald';
+    /* font-weight: 400; */
+  }
+</style>

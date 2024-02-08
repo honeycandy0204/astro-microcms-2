@@ -15,7 +15,7 @@ const response = await getBlogs({ fields: ['id', 'publishedAt', 'title'] });
         <ul>
           {
             response.contents.slice(0, 3).map((content: any) => (
-              <a href={content.id} target="_blank" rel="noopener noreferrer">
+              <a href={`/blog/${content.id}`} target="_blank" rel="noopener noreferrer">
                 <li>
                   <p>
                     <time>{content.publishedAt.slice(0, 10)}</time>
@@ -27,7 +27,7 @@ const response = await getBlogs({ fields: ['id', 'publishedAt', 'title'] });
           }
         </ul>
         <div class="allposts-link">
-          <a href="/posts" target="_blank" rel="noopener noreferrer">記事一覧ページはこちら<span></span></a>
+          <a href="/blog/1" target="_blank" rel="noopener noreferrer">記事一覧ページはこちら<span></span></a>
         </div>
       </div>
     </div>

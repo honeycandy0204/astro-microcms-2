@@ -1,0 +1,55 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getBlogs } from '../../library/microcms';
+import type { GetStaticPathsOptions } from 'astro';
+
+export const getStaticPaths = async ({ paginate }: GetStaticPathsOptions) => {
+  // limit パラメーターを指定してブログを取得
+  const blogsResponse = await getBlogs({ limit: 100, fields: ['id', 'publishedAt', 'title'] });
+  const blogs = blogsResponse.contents;
+
+  // ページネーション用にブログデータを分割
+  return paginate(blogs, { pageSize: 3 }); // 1ページあたり3件ずつ表示
+};
+
+const { page } = Astro.props;
+---
+
+<Layout title={`page ${page.currentPage} | Dear Cats`}>
+  <main>
+    <ul>
+      {/* ページのデータをマップし、各ブログ記事を表示 */}
+      {
+        page.data.map((content: any) => (
+          <li>
+            <h2>{content.title}</h2>
+            <p>{content.publishedAt}</p>
+            {/* その他のブログ記事の表示 */}
+          </li>
+        ))
+      }
+    </ul>
+    <nav>
+      {/* page.currentPageで現在ページ、page.lastPageで総ページ数を表示 */}
+      <p>page {page.currentPage}/{page.lastPage}</p>
+      <ul>
+        {/* page.url.prevがある場合は前ページへのリンクを表示 */}
+        {
+          page.url.prev && (
+            <li>
+              <a href={page.url.prev}>PREV</a>
+            </li>
+          )
+        }
+        {/* page.url.nextがある場合は次ページへのリンクを表示 */}
+        {
+          page.url.next && (
+            <li>
+              <a href={page.url.next}>NEXT</a>
+            </li>
+          )
+        }
+      </ul>
+    </nav>
+  </main>
+</Layout>

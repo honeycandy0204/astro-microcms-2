@@ -34,6 +34,51 @@ const response = await getBlogs({ fields: ['id', 'publishedAt', 'title'] });
   </Container>
 </section>
 <style>
+  section {
+    padding-top: 80px;
+  }
+  /* sp */
+  .wrap {
+    width: 96%;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .title-area {
+    text-align: left;
+  }
+  .left {
+    text-align: left;
+  }
+  ul {
+    width: 100%;
+    text-align: left;
+    display: inline-block;
+    margin-bottom: 16px;
+  }
+  li {
+    padding: 20px;
+  }
+  li {
+    border-bottom: 0.5px solid var(--accent-light);
+  }
+  li p {
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  time {
+    font-size: 0.9rem;
+    color: var(--gray-10);
+    display: block;
+    font-weight: normal;
+  }
+  .allposts-link {
+    margin: 0 auto;
+    text-align: right;
+    display: block;
+    color: var(--gray-25);
+  }
+
+  /* pc */
   @media screen and (min-width: 768px) {
     .wrap {
       display: flex;
@@ -51,69 +96,19 @@ const response = await getBlogs({ fields: ['id', 'publishedAt', 'title'] });
       width: 100%;
     }
     li:hover {
-      transform: none;
-      transition: none;
+      transform: scale(1.05);
+      transition: var(--theme-transition);
     }
-  }
-  .wrap {
-    width: 96%;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .title-area {
-    text-align: left;
-  }
-  .left {
-    text-align: left;
-  }
-
-  ul {
-    width: 100%;
-    text-align: left;
-    display: inline-block;
-    margin-bottom: 16px;
-  }
-  li {
-    padding: 20px;
-  }
-
-  li {
-    border-bottom: 0.5px solid var(--accent-light);
-  }
-
-  li p {
-    font-size: 1.2rem;
-    font-weight: bold;
-  }
-
-  li:hover {
-    transform: scale(1.05);
-    transition: var(--theme-transition);
-  }
-
-  li:not(:hover) {
-    transition: var(--theme-transition);
-  }
-
-  time {
-    font-size: 0.9rem;
-    color: var(--gray-10);
-    display: block;
-    font-weight: normal;
-  }
-  .allposts-link {
-    margin: 0 auto;
-    text-align: right;
-    display: block;
-    color: var(--gray-25);
-  }
-  .allposts-link:hover {
-    transform: scale(1.03);
-    transition: var(--theme-transition);
-    color: var(--white);
-  }
-
-  .allposts-link:not(:hover) {
-    transition: var(--theme-transition);
+    li:not(:hover) {
+      transition: var(--theme-transition);
+    }
+    .allposts-link:hover {
+      transform: scale(1.03);
+      transition: var(--theme-transition);
+      color: var(--white);
+    }
+    .allposts-link:not(:hover) {
+      transition: var(--theme-transition);
+    }
   }
 </style>

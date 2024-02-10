@@ -1,0 +1,95 @@
+---
+import { Image } from 'astro:assets';
+import komakiImage from '../assets/komaki2.png';
+import takuboImage from '../assets/takubo2.png';
+---
+
+<div class="container">
+  <div class="title">
+    <div class="title-area">
+      <div class="title-sub">
+        <img class="animated-element" src="/title-takubo1.svg" alt="田窪寛之" />
+        <img class="animated-element" src="/title-komaki1.svg" alt="小牧良平" />
+        <img class="animated-element" src="/title-ja1.svg" alt="無観客ライブ配信" />
+      </div>
+      <div class="photo-pc">
+        <div class="photo-komaki"><Image src={komakiImage} alt="小牧良平" /></div>
+        <div class="photo-takubo"><Image src={takuboImage} alt="田窪寛之" /></div>
+      </div>
+    </div>
+    <div class="full-width">
+      <img class="animated-element" src="/StreamingJazzLive.svg" alt="StreamingJazzLive" />
+    </div>
+  </div>
+  <div class="photo-sp">
+    <div class="photo-komaki"><Image src={komakiImage} alt="小牧良平" /></div>
+    <div class="photo-takubo"><Image src={takuboImage} alt="田窪寛之" /></div>
+  </div>
+</div>
+<style>
+  /* sp */
+  .container {
+    padding: 40px 0;
+  }
+  .title img {
+    width: 60%;
+  }
+
+  .full-width img {
+    width: 100%;
+  }
+  .photo-sp {
+    display: flex;
+  }
+  .photo-pc {
+    display: none;
+  }
+  /* pc */
+  @media screen and (min-width: 768px) {
+    .container {
+      height: 100vh;
+    }
+    .title img {
+      width: 100%;
+      height: auto;
+    }
+    .title-area {
+      display: flex;
+    }
+
+    .title-sub {
+      width: 40%;
+    }
+    .full-width img {
+      width: 100%;
+    }
+    .photo-pc {
+      width: 60%;
+      display: flex;
+      margin-top: auto;
+    }
+    .photo-pc img {
+      width: 100%;
+      height: auto;
+    }
+    .photo-komaki,
+    .photo-takubo {
+      height: auto;
+    }
+    .photo-sp {
+      display: none;
+    }
+  }
+</style>
+<script>
+  import { gsap } from 'gsap';
+
+  // タイトルの出現アニメーション
+  gsap.from('.animated-element', {
+    y: 100,
+    opacity: 0,
+    stagger: 1,
+    duration: 2,
+    delay: 1.5,
+  });
+</script>

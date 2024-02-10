@@ -70,17 +70,7 @@ const { page } = Astro.props;
 </BlogLayout>
 
 <style>
-  @media screen and (min-width: 768px) {
-    .left {
-      text-align: left;
-    }
-    .posts-area {
-      flex-grow: 1;
-    }
-    .posts-area ul {
-      width: 100%;
-    }
-  }
+  /* sp */
   .wrap {
     width: 96%;
     margin: 0 auto;
@@ -111,16 +101,6 @@ const { page } = Astro.props;
     font-size: 1.2rem;
     font-weight: bold;
   }
-
-  .posts-area li:hover {
-    transform: scale(1.05);
-    transition: var(--theme-transition);
-  }
-
-  .posts-area li:not(:hover) {
-    transition: var(--theme-transition);
-  }
-
   time {
     font-size: 0.9rem;
     color: var(--gray-10);
@@ -130,6 +110,24 @@ const { page } = Astro.props;
   nav p {
     text-align: center;
     font-family: 'Oswald';
-    /* font-weight: 400; */
+  }
+  @media screen and (min-width: 768px) {
+    .left {
+      text-align: left;
+    }
+    .posts-area {
+      flex-grow: 1;
+    }
+    .posts-area ul {
+      width: 100%;
+    }
+    .posts-area li:hover {
+      transform: scale(1.05);
+      transition: var(--theme-transition);
+    }
+
+    .posts-area li:not(:hover) {
+      transition: var(--theme-transition);
+    }
   }
 </style>

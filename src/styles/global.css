@@ -102,14 +102,22 @@ section {
 }
 
 /* セクションタイトル */
+/* sp */
 .section-title {
   text-align: center;
   font-family: "Oswald";
   font-weight: 400;
+  font-size: var(--text-3xl);
   background-image: var(--accent-gradient);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+/* pc */
+@media screen and (min-width: 768px) {
+  .section-title {
+    font-size: var(--text-5xl);
+  }
 }
 
 /* icon */

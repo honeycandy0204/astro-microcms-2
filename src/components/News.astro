@@ -34,9 +34,6 @@ const response = await getBlogs({ fields: ['id', 'publishedAt', 'title'] });
   </Container>
 </section>
 <style>
-  section {
-    padding-top: 80px;
-  }
   /* sp */
   .wrap {
     width: 96%;
@@ -80,6 +77,9 @@ const response = await getBlogs({ fields: ['id', 'publishedAt', 'title'] });
 
   /* pc */
   @media screen and (min-width: 768px) {
+    section {
+      padding-top: 80px;
+    }
     .wrap {
       display: flex;
       justify-content: start;

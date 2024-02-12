@@ -6,7 +6,7 @@ import Container from './Container.astro';
   <h2 class="section-title">Contact</h2>
   <p>配信ライブに関するお問い合わせはこちらまでどうぞ</p>
   <Container>
-    <form action="https://ssgform.com/s/QxZMMEESllqI" method="post">
+    <form action="https://ssgform.com/s/QxZMMEESllqI" method="POST">
       <div class="user-name flexContainer">
         <label for="user-name">お名前</label>
         <input type="text" id="user-name" name="お名前" required="required" />
@@ -20,7 +20,7 @@ import Container from './Container.astro';
         <textarea id="contact-contents" name="お問い合わせ内容" required="required"></textarea>
       </div>
       <div class="btn">
-        <button type="submit">送信する<span></span></button>
+        <button type="submit">送信する</button>
       </div>
     </form>
   </Container>

@@ -6,19 +6,26 @@ import takuboImage from '../assets/takubo2.png';
 
 <div class="container">
   <div class="title">
-    <div class="title-area">
-      <div class="title-sub">
+    <div class="title-pc-area">
+      <div class="title-pc">
         <img class="animated-element" src="/title-takubo1.svg" alt="田窪寛之" />
         <img class="animated-element" src="/title-komaki1.svg" alt="小牧良平" />
-        <img class="animated-element" src="/title-ja1.svg" alt="無観客ライブ配信" />
+        <img class="animated-element" src="/title-ja-pc.svg" alt="無観客ライブ配信" />
       </div>
       <div class="photo-pc">
         <div class="photo-komaki"><Image src={komakiImage} alt="小牧良平" /></div>
         <div class="photo-takubo"><Image src={takuboImage} alt="田窪寛之" /></div>
       </div>
     </div>
-    <div class="full-width">
-      <img class="animated-element" src="/StreamingJazzLive.svg" alt="StreamingJazzLive" />
+    <div class="title-sp">
+      <img src="/title-player-sp.svg" alt="田窪寛之小牧良平" />
+      <img src="/title-ja-sp.svg" alt="無観客ライブ配信" />
+    </div>
+    <div class="main-title-pc">
+      <img class="animated-element" src="/main-title-pc.svg" alt="StreamingJazzLive" />
+    </div>
+    <div class="main-title-sp">
+      <img src="/main-title-sp.svg" alt="StreamingJazzLive" />
     </div>
   </div>
   <div class="photo-sp">
@@ -32,16 +39,13 @@ import takuboImage from '../assets/takubo2.png';
     padding: 40px 0;
   }
   .title img {
-    width: 60%;
-  }
-
-  .full-width img {
     width: 100%;
   }
   .photo-sp {
     display: flex;
   }
-  .photo-pc {
+  .title-pc-area,
+  .main-title-pc {
     display: none;
   }
   /* pc */
@@ -53,14 +57,13 @@ import takuboImage from '../assets/takubo2.png';
       width: 100%;
       height: auto;
     }
-    .title-area {
+    .title-pc-area {
       display: flex;
     }
-
-    .title-sub {
+    .title-pc {
       width: 40%;
     }
-    .full-width img {
+    .main-title-pc img {
       width: 100%;
     }
     .photo-pc {
@@ -76,6 +79,11 @@ import takuboImage from '../assets/takubo2.png';
     .photo-takubo {
       height: auto;
     }
+    .main-title-pc {
+      display: block;
+    }
+    .title-sp,
+    .main-title-sp,
     .photo-sp {
       display: none;
     }
